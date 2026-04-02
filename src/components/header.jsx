@@ -30,7 +30,6 @@ const Header = () => {
                 <div className="flex ml-auto items-center gap-4">
                     <Show when="signed-out">
                         <Button variant='outline' onClick={() => { setshowSignIn(true) }}>Sign In</Button>
-                        <Button variant='outline' >Sign Up</Button>
                     </Show>
                     <Show when="signed-in">
                         {user?.unsafeMetadata?.role === 'recruiter' && <Link to='/post-job'>

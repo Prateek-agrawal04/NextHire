@@ -137,3 +137,12 @@
     @apply font-sans;
     }
 }
+
+.wmde-markdown{
+  background: transparent !important;
+}
+.wmde-markdown ul{
+  color: white;
+  list-style-type: disc;
+  padding-left: 25px;
+}
