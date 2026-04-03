@@ -60,7 +60,7 @@ const JobCard = ({
                     <Link to={`/job/${Job.id}`} className='flex-1'>
                         <Button variant='secondary' className='w-full'>More Details</Button>
                     </Link>
-                    {isMyJob && (
+                    {!isMyJob && (
                         <Button variant='outline' onClick={handleSaveJob} className='cursor-pointer' disabled={loadingSavedJob} >
                             {saved ?
                                 <Heart size={20} stroke='red' fill='red' />
