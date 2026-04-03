@@ -27,12 +27,12 @@ const schema = z.object({
 const PostJob = () => {
 
   const { user, isLoaded } = useUser();
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const { fn: fnCompanies, data: companies, loading: loadingCompanies } = useFetch(getCompanies);
   const { fn: fnCreateJob, data: dataCreateJob, loading: loadingCreateJob, error: errorCreateJob } = useFetch(addNewJob);
 
-  const onSubmit= (data)=> {
+  const onSubmit = (data) => {
     fnCreateJob({
       ...data,
       recruiter_id: user.id,
@@ -46,12 +46,12 @@ const PostJob = () => {
     }
   }, [isLoaded]);
 
-  useEffect(()=>{
-    if(dataCreateJob?.length> 0){
+  useEffect(() => {
+    if (dataCreateJob?.length > 0) {
       console.log(dataCreateJob);
       navigate("/jobs")
     }
-  },[loadingCreateJob])
+  }, [loadingCreateJob])
 
   const {
     register,
@@ -65,10 +65,10 @@ const PostJob = () => {
 
   if (!isLoaded || loadingCompanies) {
     return (
-    <div className='mx-5 sm:mx-7 md:mx-11 lg:mx-17'>
-      <BarLoader className='mb-4' width={'100%'} color='#36d7b7' />
-    </div>
-  );
+      <div className='mx-5 sm:mx-7 md:mx-11 lg:mx-17'>
+        <BarLoader className='mb-4' width={'100%'} color='#36d7b7' />
+      </div>
+    );
   }
 
   if (user?.unsafeMetadata?.role !== 'recruiter') {
@@ -85,7 +85,7 @@ const PostJob = () => {
         <Textarea placeholder='Job Description' {...register('description')} />
         {errors.title && <p className='text-red-500'>{errors.description.message}</p>}
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap sm:flex-nowrap gap-2">
           <Controller
             name='location'
             control={control}
@@ -126,7 +126,9 @@ const PostJob = () => {
                 </SelectContent>
               </Select>
             )} />
+          <div className='w-full sm:w-auto'>
             <AddCompanyDrawer fetchCompanies={fnCompanies} />
+          </div>
         </div>
         {errors.title && <p className='text-red-500'>{errors.location.message}</p>}
         {errors.title && <p className='text-red-500'>{errors.company_id.message}</p>}

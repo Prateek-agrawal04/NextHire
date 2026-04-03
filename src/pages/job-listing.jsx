@@ -12,7 +12,7 @@ import { BarLoader } from 'react-spinners';
 
 const JobListing = () => {
 
-  const { isLoaded } = useUser();
+  const { isLoaded, user } = useUser();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
@@ -60,7 +60,7 @@ const JobListing = () => {
           <Input type='text' placeholder="Search Jobs by title..." name='search-query' className='p-4 h-full' />
           <Button type='submit' variant='blue' className='h-full sm:w-28' >Search</Button>
         </form>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 my-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 my-2">
           <Select value={location} onValueChange={(value) => { setLocation(value) }} >
             <SelectTrigger className='w-full'>
               <SelectValue placeholder="Select Location" />
@@ -93,7 +93,7 @@ const JobListing = () => {
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
             {Jobs?.length ? (
               Jobs.map((Job) => {
-                return <JobCard key={Job.id} Job={Job} savedInit={Job?.saved?.length > 0} />
+                return <JobCard key={Job.id} Job={Job} savedInit={Job?.saved?.length > 0} isMyJob={Job.recruiter_id === user.id} onJobSaved={fnJobs} />
               })
             ) : (
               <div>No Jobs found</div>
