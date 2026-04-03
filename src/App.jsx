@@ -8,7 +8,7 @@ import JobPage from "./pages/job";
 import PostJob from "./pages/post-job";
 import SavedJobs from "./pages/saved-jobs";
 import MyJobs from "./pages/my-jobs";
-import './app.css'
+import './App.css'
 import ProtectedRoute from "./components/protected-route";
 
 function App() {
