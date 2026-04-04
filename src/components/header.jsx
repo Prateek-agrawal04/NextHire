@@ -25,7 +25,7 @@ const Header = () => {
         <>
             <nav className='py-4 flex items-center mx-4 sm:mx-6 md:mx-10 lg:mx-16'>
                 <Link>
-                    <img src="logo.png" alt="NextHire" className='h-10 sm:h-15 md:h-17 lg:h-20' />
+                    <img src="/logo.png" alt="NextHire" className='h-10 sm:h-15 md:h-17 lg:h-20' />
                 </Link>
                 <div className="flex ml-auto items-center gap-4">
                     <Show when="signed-out">
